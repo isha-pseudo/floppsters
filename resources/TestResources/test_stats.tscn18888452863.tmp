@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cmt2ft1wv8djd"]
+
+[ext_resource type="Script" uid="uid://cigg7ocekdoka" path="res://characters/character_handler.gd" id="2_4mn8p"]
+[ext_resource type="Resource" uid="uid://dlvg8laq2to3k" path="res://characters/floppa/floppa.tres" id="2_ww54h"]
+
+[node name="TestStats" type="Node3D" unique_id=1909195163]
+
+[node name="CharacterHandler" type="Node" parent="." unique_id=1457394846]
+script = ExtResource("2_4mn8p")
+base_stats = ExtResource("2_ww54h")
+metadata/_custom_type_script = "uid://cigg7ocekdoka"
