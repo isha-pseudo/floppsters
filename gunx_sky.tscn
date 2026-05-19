@@ -4,8 +4,13 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rvjap"]
 shader = ExtResource("1_uixq0")
-shader_parameter/sky_yellow = Color(255, 244, 108, 1)
+shader_parameter/sky_yellow = Color(1, 0.957, 0.424, 1)
 shader_parameter/sky_blue = Color(0.055, 0.808, 0.682, 1)
+shader_parameter/sky_purple = Color(1, 0.255, 0.953, 1)
+shader_parameter/wave_speed = 0.25
+shader_parameter/wave_strength = 0.12
+shader_parameter/rotation_speed_y = 0.04
+shader_parameter/rotation_speed_x = 0.02
 
 [sub_resource type="Sky" id="Sky_2anr8"]
 sky_material = SubResource("ShaderMaterial_rvjap")
@@ -13,6 +18,12 @@ sky_material = SubResource("ShaderMaterial_rvjap")
 [sub_resource type="Environment" id="Environment_m2k23"]
 background_mode = 2
 sky = SubResource("Sky_2anr8")
+ambient_light_source = 3
+fog_mode = 1
+fog_light_energy = 1.55
+fog_density = 1.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [node name="Node3D" type="Node3D" unique_id=1673520276]
 
