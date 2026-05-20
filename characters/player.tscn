@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cx36leu3868qf"]
+
+[ext_resource type="Script" uid="uid://cigg7ocekdoka" path="res://characters/character_handler.gd" id="1_dnjla"]
+[ext_resource type="Resource" uid="uid://dlvg8laq2to3k" path="res://characters/floppa/floppa.tres" id="2_3eadt"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnjla"]
+
+[node name="Player" type="CharacterBody3D" unique_id=1017716257]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="CharacterHandler" type="Node" parent="." unique_id=678490395]
+script = ExtResource("1_dnjla")
+base_stats = ExtResource("2_3eadt")
+metadata/_custom_type_script = "uid://cigg7ocekdoka"
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1281267335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=194474103]
+shape = SubResource("CapsuleShape3D_dnjla")
