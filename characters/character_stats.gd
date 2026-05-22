@@ -11,10 +11,11 @@ class_name CharacterStats
 @export var cushion: float = 0.6
 
 @export_group("stopping")
-@export var buzz: float = 5.0
+@export var buzz: float = 0.0
+@export var max_buzz: float = 20.0
 
 @export_group("limits")
-@export var max_momentum: float = 0.2
+@export var max_speed: float = 11.0
 @export var drag: float = 0.5
 
 
@@ -22,7 +23,5 @@ class_name CharacterStats
 func _ready() -> void:
 	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

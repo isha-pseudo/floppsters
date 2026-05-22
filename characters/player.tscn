@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://cx36leu3868qf"]
 
 [ext_resource type="Script" uid="uid://cigg7ocekdoka" path="res://characters/character_handler.gd" id="1_dnjla"]
+[ext_resource type="Script" uid="uid://puh40sjsuusg" path="res://characters/Controller/character_controller.gd" id="1_tory2"]
 [ext_resource type="Resource" uid="uid://dlvg8laq2to3k" path="res://characters/floppa/floppa.tres" id="2_3eadt"]
+[ext_resource type="Script" uid="uid://6sdqkioqo6vh" path="res://characters/stats_menu.gd" id="4_x0jl3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnjla"]
 
-[node name="Player" type="CharacterBody3D" unique_id=1017716257]
+[node name="Player" type="CharacterBody3D" unique_id=1017716257 node_paths=PackedStringArray("handler", "camera")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_tory2")
+handler = NodePath("CharacterHandler")
+camera = NodePath("Camera3D")
 
 [node name="CharacterHandler" type="Node" parent="." unique_id=678490395]
 script = ExtResource("1_dnjla")
@@ -18,3 +23,55 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=194474103]
 shape = SubResource("CapsuleShape3D_dnjla")
+
+[node name="StatsMenu" type="CanvasLayer" parent="." unique_id=885417828]
+script = ExtResource("4_x0jl3")
+
+[node name="ColorRect" type="ColorRect" parent="StatsMenu" unique_id=1084915508]
+offset_left = 54.0
+offset_top = 112.0
+offset_right = 302.0
+offset_bottom = 284.0
+color = Color(1, 1, 1, 0.10980392)
+
+[node name="StatsContainer" type="VBoxContainer" parent="StatsMenu/ColorRect" unique_id=1383172690]
+layout_mode = 0
+offset_left = 1.0
+offset_right = 249.0
+offset_bottom = 173.0
+
+[node name="TitleLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1759456143]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+
+[node name="WeightLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1169301190]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+
+[node name="FluffinessLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1936695680]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+
+[node name="FrictionLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=72224707]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+
+[node name="BuzzLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1274620213]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+
+[node name="MaxSpeedLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=448148366]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.98895735, 0.98895746, 0.98895735, 1)
+theme_override_constants/outline_size = 1

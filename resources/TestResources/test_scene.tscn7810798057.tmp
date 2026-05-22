@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://ehwg4ltb8mug"]
+
+[ext_resource type="Texture2D" uid="uid://btigqwky4lku8" path="res://addons/godot-prototype-texture/Vector/checker_512x512/checker_white_512x512.svg" id="1_iblch"]
+[ext_resource type="PackedScene" uid="uid://cx36leu3868qf" path="res://characters/player.tscn" id="1_rlk8i"]
+[ext_resource type="PackedScene" uid="uid://cs6c7vmmgw3jj" path="res://shaders/sky/gunx_sky.tscn" id="2_iblch"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6kxni"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_g7xph"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6kxni"]
+albedo_texture = ExtResource("1_iblch")
+uv1_scale = Vector3(50, 50, 50)
+
+[node name="Test_Scene" type="Node3D" unique_id=1103806758]
+
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1945958235]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=501004449]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_6kxni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1182264739]
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
+mesh = SubResource("BoxMesh_g7xph")
+surface_material_override/0 = SubResource("StandardMaterial3D_6kxni")
+
+[node name="Player" parent="." unique_id=1017716257 instance=ExtResource("1_rlk8i")]
+
+[node name="Node3D" parent="." unique_id=1673520276 instance=ExtResource("2_iblch")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1931200230]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6, 0)

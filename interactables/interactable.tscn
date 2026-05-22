@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://h8ffdor31d1e"]
+
+[ext_resource type="Texture2D" uid="uid://dwjp0cvk587we" path="res://addons/godot-prototype-texture/Vector/checker_512x512/checker_orange_512x512.svg" id="1_kdhm5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t3he"]
+albedo_texture = ExtResource("1_kdhm5")
+
+[sub_resource type="BoxMesh" id="BoxMesh_lbwal"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kdhm5"]
+
+[node name="Node3D" type="Node3D" unique_id=420561461]
+
+[node name="StatChanger" type="StaticBody3D" parent="." unique_id=955366743]
+
+[node name="Visual" type="MeshInstance3D" parent="StatChanger" unique_id=510138070]
+material_override = SubResource("StandardMaterial3D_7t3he")
+mesh = SubResource("BoxMesh_lbwal")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StatChanger" unique_id=1611808077]
+shape = SubResource("BoxShape3D_kdhm5")
