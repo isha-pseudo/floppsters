@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cx36leu3868qf" path="res://characters/player.tscn" id="1_rlk8i"]
 [ext_resource type="PackedScene" uid="uid://cs6c7vmmgw3jj" path="res://shaders/sky/gunx_sky.tscn" id="2_iblch"]
 [ext_resource type="Texture2D" uid="uid://b74uuk66li5wg" path="res://addons/godot-prototype-texture/Vector/checker_512x512/checker_pink_512x512.svg" id="4_6kxni"]
+[ext_resource type="PackedScene" uid="uid://h8ffdor31d1e" path="res://interactables/interactable.tscn" id="5_g7xph"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kxni"]
 
@@ -46,3 +47,43 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qsi75")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1833288285]
 shape = SubResource("BoxShape3D_qgqrn")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1450200847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7733316, 0)
+light_color = Color(0.9948469, 0.30718863, 0.6713827, 1)
+light_energy = 13.69
+omni_range = 51.23
+omni_attenuation = 10.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=708267175]
+transform = Transform3D(0.5000001, -0.2293079, 0.83511543, -2.407525e-08, 0.9643083, 0.264782, -0.8660253, -0.13239105, 0.48215428, 39.874344, 4.7533083, 13.055025)
+light_energy = 0.4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=272076118]
+transform = Transform3D(0.74731034, -0.4999999, -0.43763825, 0.5053411, -3.7719413e-08, 0.8629195, -0.4314598, -0.8660254, 0.25267062, -17.38541, 7.871578, 0)
+light_energy = 0.5
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="." unique_id=78772380]
+transform = Transform3D(-0.91583085, -0.106327035, 0.38723183, -2.407525e-08, 0.9643083, 0.264782, -0.4015644, 0.24249554, -0.88314337, 17.253578, 14.480056, -34.806004)
+light_energy = 0.4
+
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="." unique_id=424362430]
+transform = Transform3D(0.99969935, -0.00649218, 0.023643903, -1.721139e-08, 0.9643083, 0.264782, -0.024519026, -0.26470238, 0.9640184, 19.293839, 74.826866, 82.8693)
+light_energy = 0.4
+
+[node name="Interactables" type="Node3D" parent="." unique_id=1295804804]
+
+[node name="Flufiness+" parent="Interactables" unique_id=420561461 instance=ExtResource("5_g7xph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
+stat_to_change = "friction"
+
+[node name="weight" parent="Interactables" unique_id=955366743 instance=ExtResource("5_g7xph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, -6)
+stat_to_change = "weight"
+
+[node name="weight2" parent="Interactables" unique_id=997053798 instance=ExtResource("5_g7xph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, -3.0279608)
+
+[node name="Flufiness+2" parent="Interactables" unique_id=1434912991 instance=ExtResource("5_g7xph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 3)
+stat_to_change = "cushion"

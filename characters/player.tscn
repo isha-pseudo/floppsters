@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cigg7ocekdoka" path="res://characters/character_handler.gd" id="1_dnjla"]
 [ext_resource type="Script" uid="uid://puh40sjsuusg" path="res://characters/Controller/character_controller.gd" id="1_tory2"]
 [ext_resource type="Resource" uid="uid://dlvg8laq2to3k" path="res://characters/floppa/floppa.tres" id="2_3eadt"]
+[ext_resource type="Script" uid="uid://dqth2icdi7ih0" path="res://characters/Controller/camera_handler.gd" id="4_evndh"]
 [ext_resource type="Script" uid="uid://6sdqkioqo6vh" path="res://characters/stats_menu.gd" id="4_x0jl3"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnjla"]
@@ -18,8 +19,18 @@ script = ExtResource("1_dnjla")
 base_stats = ExtResource("2_3eadt")
 metadata/_custom_type_script = "uid://cigg7ocekdoka"
 
+[node name="CameraHandler" type="Node" parent="." unique_id=2137509457 node_paths=PackedStringArray("character_handler", "camera")]
+script = ExtResource("4_evndh")
+character_handler = NodePath("../CharacterHandler")
+camera = NodePath("../Camera3D")
+metadata/_custom_type_script = "uid://dqth2icdi7ih0"
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1281267335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="InteractRaycast" type="RayCast3D" parent="Camera3D" unique_id=800122167]
+target_position = Vector3(0, 0, -4)
+debug_shape_custom_color = Color(0.7148878, 0.5908215, 0.28709564, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=194474103]
 shape = SubResource("CapsuleShape3D_dnjla")
@@ -75,3 +86,34 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.98895735, 0.98895746, 0.98895735, 1)
 theme_override_constants/outline_size = 1
+
+[node name="InteractPrompt" type="Label" parent="." unique_id=1681839361]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 30
+text = "Press e to interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." unique_id=1008495456]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "."
+horizontal_alignment = 1
+vertical_alignment = 1

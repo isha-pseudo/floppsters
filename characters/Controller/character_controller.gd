@@ -16,6 +16,12 @@ var horizontal_velocity: Vector3 = Vector3.ZERO
 
 var coyote_timer: float = 0.0
 
+## raycast
+
+@onready var interact_raycast: RayCast3D = $Camera3D/InteractRaycast
+
+@onready var interact_prompt: Label = $InteractPrompt
+
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
@@ -80,6 +86,14 @@ func _physics_process(delta: float) -> void:
 	horizontal_velocity.x = velocity.x
 	horizontal_velocity.z = velocity.z
 	
+	if interact_raycast.is_colliding():
+		var hit = interact_raycast.get_collider()
+		if hit and hit.has_method("interact"):
+			interact_prompt.visible = true
+		else:
+			interact_prompt.visible = false
+	else:
+		interact_prompt.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -95,4 +109,11 @@ func _input(event: InputEvent) -> void:
 		camera_pitch = clamp(camera_pitch, deg_to_rad(-max_pitch), deg_to_rad(max_pitch))
 		if camera:
 			camera.rotation.x = camera_pitch
+	if event.is_action_pressed("interact"):
+		interact()
 			
+func interact() -> void:
+	if interact_raycast.is_colliding():
+		var hit = interact_raycast.get_collider()
+		if hit.has_method("interact"):
+			hit.interact(self)

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://h8ffdor31d1e"]
 
+[ext_resource type="Script" uid="uid://ct6nirdunal1a" path="res://interactables/interactable.gd" id="1_7t3he"]
 [ext_resource type="Texture2D" uid="uid://dwjp0cvk587we" path="res://addons/godot-prototype-texture/Vector/checker_512x512/checker_orange_512x512.svg" id="1_kdhm5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7t3he"]
@@ -9,13 +10,17 @@ albedo_texture = ExtResource("1_kdhm5")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kdhm5"]
 
-[node name="Node3D" type="Node3D" unique_id=420561461]
+[node name="StatChanger" type="StaticBody3D" unique_id=955366743]
+script = ExtResource("1_7t3he")
 
-[node name="StatChanger" type="StaticBody3D" parent="." unique_id=955366743]
-
-[node name="Visual" type="MeshInstance3D" parent="StatChanger" unique_id=510138070]
+[node name="Visual" type="MeshInstance3D" parent="." unique_id=510138070]
 material_override = SubResource("StandardMaterial3D_7t3he")
 mesh = SubResource("BoxMesh_lbwal")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StatChanger" unique_id=1611808077]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1611808077]
 shape = SubResource("BoxShape3D_kdhm5")
+
+[node name="StatLabel" type="Label3D" parent="." unique_id=231530550]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+text = "Stat Label"
