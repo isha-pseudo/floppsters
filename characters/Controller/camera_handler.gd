@@ -44,3 +44,5 @@ func _physics_process(delta: float) -> void:
 	var target_roll = turn_rate / (2.0 + friction_factor * 0.2)
 	
 	camera.rotation.z = lerp(camera.rotation.z, target_roll, 0.15)
+
+	
