@@ -8,6 +8,7 @@ extends CanvasLayer
 @onready var friction_label: Label = $ColorRect/StatsContainer/FrictionLabel
 @onready var buzz_label: Label = $ColorRect/StatsContainer/BuzzLabel
 @onready var max_speed_label: Label = $ColorRect/StatsContainer/MaxSpeedLabel
+@onready var elasticity_label: Label = $ColorRect/StatsContainer/ElasticityLabel
 
 var is_visible: bool = false
 
@@ -19,7 +20,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		is_visible = not is_visible
 		visible = is_visible
-	
+		
 	if is_visible:
 		update_stats_display()
 		
@@ -36,3 +37,4 @@ func update_stats_display():
 		friction_label.text = "Friction: " + str(stats.get("friction", 0.0))
 		buzz_label.text = "Current Buzz: " + str(stats.get("effective_buzz", 0.0))
 		max_speed_label.text = "Max Speed: " + str(stats.get("effective_max_speed", 0.0))
+		elasticity_label.text = "Elasticity: " + str(stats.get("elasticity", 0.0))

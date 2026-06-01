@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dlvg8laq2to3k" path="res://characters/floppa/floppa.tres" id="2_3eadt"]
 [ext_resource type="Script" uid="uid://dqth2icdi7ih0" path="res://characters/Controller/camera_handler.gd" id="4_evndh"]
 [ext_resource type="Script" uid="uid://6sdqkioqo6vh" path="res://characters/stats_menu.gd" id="4_x0jl3"]
+[ext_resource type="Script" uid="uid://dbpclw4m8n5q8" path="res://characters/Controller/character_state_handler.gd" id="5_h1q25"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnjla"]
 
@@ -19,11 +20,17 @@ script = ExtResource("1_dnjla")
 base_stats = ExtResource("2_3eadt")
 metadata/_custom_type_script = "uid://cigg7ocekdoka"
 
-[node name="CameraHandler" type="Node" parent="." unique_id=2137509457 node_paths=PackedStringArray("character_handler", "camera")]
+[node name="CameraHandler" type="Node" parent="." unique_id=2137509457 node_paths=PackedStringArray("character_handler", "camera", "state_handler")]
 script = ExtResource("4_evndh")
 character_handler = NodePath("../CharacterHandler")
 camera = NodePath("../Camera3D")
+state_handler = NodePath("../CharacterStateHandler")
 metadata/_custom_type_script = "uid://dqth2icdi7ih0"
+
+[node name="CharacterStateHandler" type="Node" parent="." unique_id=1265519940 node_paths=PackedStringArray("character_handler")]
+script = ExtResource("5_h1q25")
+character_handler = NodePath("../CharacterHandler")
+metadata/_custom_type_script = "uid://dbpclw4m8n5q8"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1281267335]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
@@ -42,7 +49,7 @@ script = ExtResource("4_x0jl3")
 offset_left = 54.0
 offset_top = 112.0
 offset_right = 302.0
-offset_bottom = 284.0
+offset_bottom = 317.0
 color = Color(1, 1, 1, 0.10980392)
 
 [node name="StatsContainer" type="VBoxContainer" parent="StatsMenu/ColorRect" unique_id=1383172690]
@@ -50,6 +57,9 @@ layout_mode = 0
 offset_left = 1.0
 offset_right = 249.0
 offset_bottom = 173.0
+
+[node name="ElasticityLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1031810445]
+layout_mode = 2
 
 [node name="TitleLabel" type="Label" parent="StatsMenu/ColorRect/StatsContainer" unique_id=1759456143]
 layout_mode = 2

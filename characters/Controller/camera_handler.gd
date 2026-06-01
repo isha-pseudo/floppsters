@@ -5,6 +5,8 @@ class_name CameraHandler
 @onready var character_controller: CharacterController = get_parent() as CharacterController
 @export var camera: Camera3D
 
+@export var state_handler: CharacterStateHandler
+
 var current_velocity: Vector3 = Vector3.ZERO
 var previous_velocity: Vector3 = Vector3.ZERO
 
@@ -44,5 +46,7 @@ func _physics_process(delta: float) -> void:
 	var target_roll = turn_rate / (2.0 + friction_factor * 0.2)
 	
 	camera.rotation.z = lerp(camera.rotation.z, target_roll, 0.15)
-
+	
+	if state_handler:
+		camera.position.y = state_handler.base_camera_y + state_handler.current_squish_offset
 	

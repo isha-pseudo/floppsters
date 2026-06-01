@@ -1,6 +1,6 @@
 extends StaticBody3D
 
-@export_enum("weight", "fluffiness", "friction", "Elasticity", "cushion") var stat_to_change: String = "fluffiness"
+@export_enum("weight", "fluffiness", "friction", "elasticity", "cushion") var stat_to_change: String = "fluffiness"
 @export var change_amount: float = 0.2
 
 @onready var stat_label: Label3D = $StatLabel
@@ -8,6 +8,7 @@ extends StaticBody3D
 var player_controller = null
 
 func _ready():
+	
 	update_label()
 
 func interact(player_controller) -> void:
@@ -18,7 +19,7 @@ func interact(player_controller) -> void:
 	
 	var base = player_controller.handler.base_stats
 	
-	if stat_to_change in base:
+	if stat_to_change in ["weight", "fluffiness", "friction", "elasticity", "cushion"]:
 		var current = base.get(stat_to_change)
 		base.set(stat_to_change, current + change_amount)
 		update_label()

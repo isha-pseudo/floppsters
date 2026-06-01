@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://cs6c7vmmgw3jj" path="res://shaders/sky/gunx_sky.tscn" id="2_iblch"]
 [ext_resource type="Texture2D" uid="uid://b74uuk66li5wg" path="res://addons/godot-prototype-texture/Vector/checker_512x512/checker_pink_512x512.svg" id="4_6kxni"]
 [ext_resource type="PackedScene" uid="uid://h8ffdor31d1e" path="res://interactables/interactable.tscn" id="5_g7xph"]
-[ext_resource type="Texture2D" uid="uid://c2d0pegg4vq4c" path="res://addons/godot-prototype-texture/Vector/grid_1024x1024/grid_pink_1024x1024.svg" id="6_deajr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6kxni"]
 
@@ -22,23 +21,16 @@ albedo_texture = ExtResource("4_6kxni")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qgqrn"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qgqrn"]
-albedo_texture = ExtResource("6_deajr")
-
-[sub_resource type="BoxMesh" id="BoxMesh_qsi75"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1i3ea"]
-
 [node name="Test_Scene" type="Node3D" unique_id=1103806758]
 
 [node name="Floor" type="StaticBody3D" parent="." unique_id=1945958235]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=501004449]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_6kxni")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=1182264739]
-transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
+transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_g7xph")
 surface_material_override/0 = SubResource("StandardMaterial3D_6kxni")
 
@@ -100,15 +92,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qsi75")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1833288285]
 shape = SubResource("BoxShape3D_qgqrn")
-
-[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=1081243975]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.293531, 0, -9.128725)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D2" unique_id=1794010250]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 2, 0, 2, 0)
-material_override = SubResource("StandardMaterial3D_qgqrn")
-mesh = SubResource("BoxMesh_qsi75")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1468098815]
-transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 2, 0, 0, 0)
-shape = SubResource("BoxShape3D_1i3ea")

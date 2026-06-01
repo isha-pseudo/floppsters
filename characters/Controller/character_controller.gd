@@ -16,6 +16,8 @@ var horizontal_velocity: Vector3 = Vector3.ZERO
 
 var coyote_timer: float = 0.0
 
+var pre_move_velocity: Vector3 = Vector3.ZERO
+
 ## raycast
 
 @onready var interact_raycast: RayCast3D = $Camera3D/InteractRaycast
@@ -36,6 +38,10 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_on_floor():
 		velocity.y -= 20.0 * delta
+		
+	var weight = stats.get("weight", 70.0)
+	var elasticity = stats.get("elasticity", 0.2)
+	var jump_velocity = 8.0 * (elasticity / 0.2) * (70.0 / weight)
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var is_moving = input_dir.length() > 0.1
@@ -75,11 +81,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		coyote_timer = 0.4
 	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_timer > 0):
-		velocity.y = 8.0
+		velocity.y = jump_velocity
 		coyote_timer = 0.0
 	
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
+	
+	pre_move_velocity = velocity
 	
 	move_and_slide()
 	

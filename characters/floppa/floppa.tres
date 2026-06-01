@@ -4,6 +4,5 @@
 
 [resource]
 script = ExtResource("1_sp72e")
-friction = 12.0
 drag = 1.0
 metadata/_custom_type_script = "uid://bhsf4o5p55d4u"
